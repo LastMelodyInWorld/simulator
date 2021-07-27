@@ -76,6 +76,9 @@ export default {
         case actionsType.addOut:
           tree.addChildrenNode(selected, index, nodesType.out)
           break
+        case actionsType.copia2:
+          tree.copiarSubTree(selected, index)
+          break
         case actionsType.remove:
           tree.removeChildrenNode(selected, index)
           break

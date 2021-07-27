@@ -101,6 +101,11 @@ export default {
           value: actionsType.addOut
         },
         {
+          text: 'Copi',
+          icon: 'arrow_downward',
+          value: actionsType.copia2
+        },
+        {
           text: 'Excluir',
           icon: 'close',
           value: actionsType.remove
@@ -126,12 +131,12 @@ export default {
        */
       menuModel: [
         {
-          text: 'Produção',
+          text: 'Tratamento',
           icon: 'swap_horiz',
           value: actionsType.changed1
         },
         {
-          text: 'Tratamento',
+          text: 'Produção',
           icon: 'swap_horiz',
           value: actionsType.changed2
         },

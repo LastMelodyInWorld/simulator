@@ -16,7 +16,6 @@ export const actionsType = {
   undo: "undo",
   redo: "redo",
   save: "save",
-  saveSubTree1: "saveSubTree1",
   reset: "reset",
   config: "config",
   mini: "mini",
@@ -24,6 +23,7 @@ export const actionsType = {
   nodeh: "nodeh",
   changed1: "changed1",
   changed2: "changed2",
+  copia2: "copia2",
   nodew: "nodew"
 }
 
@@ -55,37 +55,37 @@ const DEFAULT = {
 const orientationTree = {
   top: {
     size: [WIDTH, HEIGHT],
-    x: function(d) {
+    x: function (d) {
       return d.x
     },
-    y: function(d) {
+    y: function (d) {
       return d.y
     }
   },
   right: {
     size: [HEIGHT, WIDTH],
-    x: function(d) {
+    x: function (d) {
       return 0 - d.y
     },
-    y: function(d) {
+    y: function (d) {
       return d.x
     }
   },
   bottom: {
     size: [WIDTH, HEIGHT],
-    x: function(d) {
+    x: function (d) {
       return d.x
     },
-    y: function(d) {
+    y: function (d) {
       return 0 - d.y
     }
   },
   left: {
     size: [HEIGHT, WIDTH],
-    x: function(d) {
+    x: function (d) {
       return d.y
     },
-    y: function(d) {
+    y: function (d) {
       return d.x
     }
   }
@@ -203,13 +203,13 @@ class D3Tree {
    * no localstorage esse dado sera carregado
    */
   inicializeData(reset, changed) {
-    console.log("###############")
-    console.log("changed here ->" + changed)
-    console.log("###############")
-    console.log("###############")
-    console.log("reset here ->" + reset)
-    console.log("###############")
-    if(changed){
+    // console.log("###############")
+    // console.log("changed here ->" + changed)
+    // console.log("###############")
+    // console.log("###############")
+    // console.log("reset here ->" + reset)
+    // console.log("###############")
+    if (changed) {
       this.data = {
         name: "A1",
         description: DEFAULT.description,
@@ -286,7 +286,7 @@ class D3Tree {
       .attr("width", window.innerWidth)
       .attr("height", window.innerHeight)
       .call(
-        d3.zoom().on("zoom", function() {
+        d3.zoom().on("zoom", function () {
           svg.attr("transform", d3.event.transform)
         })
       )
@@ -350,7 +350,7 @@ class D3Tree {
     let treeLayout = d3
       .tree()
       .nodeSize([this.nodeh, this.nodew])
-      .separation(function(a, b) {
+      .separation(function (a, b) {
         return a.parent === b.parent ? 1 : 1.25
       })
     // console.log("==== New Data ====")
@@ -437,7 +437,7 @@ class D3Tree {
    */
   selectFillColorNodeByClass = d => {
     let color = "white"
-    this.optionSelect.class.forEach(function(item) {
+    this.optionSelect.class.forEach(function (item) {
       if (item.text === d.data.class) {
         color = item.color
         return true
@@ -561,11 +561,11 @@ class D3Tree {
       .style("stroke", this.selectColorByType)
       .attr("fill", this.selectFillColorNodeByClass)
       .style("stroke-width", "4px")
-      .on("mouseover", function() {
+      .on("mouseover", function () {
         const node = this
         that.mouseoverNode(node)
       })
-      .on("mouseout", function(_, i) {
+      .on("mouseout", function (_, i) {
         const node = this
         that.mouseoutNode(node, i)
       })
@@ -603,11 +603,11 @@ class D3Tree {
       .style("stroke", this.selectStrokeColorBalance)
       .attr("fill", "transparent")
       .style("stroke-width", "4px")
-      .on("mouseover", function() {
+      .on("mouseover", function () {
         const node = this
         that.mouseoverNode(node)
       })
-      .on("mouseout", function(_, i) {
+      .on("mouseout", function (_, i) {
         const node = this
         const isBalance = true
         that.mouseoutNode(node, i, isBalance)
@@ -667,6 +667,79 @@ class D3Tree {
     selected.children.push(newNode)
     selected.data.children.push(newNode.data)
     this.redrawTree()
+  }
+
+  copiarSubTree(selected, item) {
+    let newCopi = {
+      children: [
+        {
+          children: [],
+          value: 0,
+          idBalance: 0,
+          name: "F1.1",
+          description: "",
+          class: "(nenhuma)",
+          resource: "Bezerras desmamadas",
+          unit: "cab",
+          category: "BOVINOS",
+          duration: "0",
+          factor: "1"
+        },
+        {
+          children: [],
+          value: 0,
+          idBalance: 0,
+          name: "F1.2",
+          description: "",
+          class: "(nenhuma)",
+          resource: "Bezerras desmamadas",
+          unit: "cab",
+          category: "BOVINOS",
+          duration: "0",
+          factor: "1"
+        }
+      ],
+      value: 0,
+      idBalance: 0,
+      name: "F1",
+      description: "",
+      class: "(nenhuma)",
+      resource: "Bezerras desmamadas",
+      unit: "cab",
+      category: "BOVINOS",
+      duration: "0",
+      factor: "1"
+    }
+
+    let newNode = d3.hierarchy(newCopi)
+
+    // console.log("&&&&&&&&&&&&")
+    // console.log(newNode)
+    console.log(newCopi)
+    console.log(selected)
+    // console.log(selected.data)
+    // console.log("&&&&&&&&&&&&")
+    
+    newNode.depth = selected.depth + 1
+    newNode.height = selected.height - 1
+    newNode.parent = selected
+    newNode.id = Date.now()
+
+    if (!selected.children) {
+      selected.children = []
+      selected.data.children = []
+    }
+
+    selected.children.push(newNode)
+    selected.data.children.push(newNode.data)
+    this.redrawTree() 
+
+    // selected.children.push(newNode.children.name("F1.1"))
+    // this.redrawTree()
+
+    // verificar se o push está certo
+    // selected.data.replace(newCopi)
+    // this.redrawTree()
   }
 
   /**
@@ -838,7 +911,7 @@ class D3Tree {
         return true
       }
 
-      if(d.data.idBalance === 0 && this.balanceClicked.d.data.idBalance > 0){
+      if (d.data.idBalance === 0 && this.balanceClicked.d.data.idBalance > 0) {
         d.data.idBalance = this.balanceClicked.d.data.idBalance
         this.resetNodeSelected()
         return true
@@ -879,7 +952,7 @@ class D3Tree {
     let descendants = this.root.descendants()
     let count = 0
 
-    descendants.forEach(function(d) {
+    descendants.forEach(function (d) {
       if (d.data.idBalance === target) count++
     })
 
@@ -891,7 +964,7 @@ class D3Tree {
     if (count > 2 && !d.children) {
       d.data.idBalance = 0
     } else {
-      descendants.forEach(function(d) {
+      descendants.forEach(function (d) {
         if (d.data.idBalance === target) d.data.idBalance = 0
 
         //Corrigi os id após remover um balanço
@@ -962,28 +1035,8 @@ class D3Tree {
     console.log("********************")
     console.log(localStorage.data)
     console.log("********************")
-  }
-
-  saveSubTree() {
-    // this.resetNodeSelected(true)
-    const jsonSubTree = JSON.stringify(this.data)
-    // function remover(chave, valor){
-    //  meuJSON = jsonSubTree.filter(function(this.data) {
-    //      return this.data[chave] != valor;
-    //  });
-    //  return meuJSON
-    // }
-    // console.log(remover("name", "A1"))
-    // delete 
-    // const splits = jsonSuvTree.split('[')
-    // console.log("*******************************")
-    // console.log(splits)
-    // console.log("*******************************")
-    // console.log("********************")
-    // console.log(jsonSubTree)
-    // console.log("********************")
-    window.localStorage.setItem('arr', jsonSubTree)
-    console.log(JSON.parse(window.localStorage.getItem('arr')))
+    console.log(history.saveState(this.data))
+    console.log("********************")
   }
 
   /**
@@ -1002,6 +1055,7 @@ class D3Tree {
     localStorage.removeItem("data")
     this.counterBalance = 1
     this.inicializeData(true)
+
     this.redrawTree(true)
   }
 
@@ -1338,7 +1392,7 @@ class D3Tree {
     let invertFlow = []
     let invertParent = []
 
-    newFlow.forEach(function(node) {
+    newFlow.forEach(function (node) {
       let notHaveParent = false
       for (let i = 0; i < newFlow.length; i++) {
         if (node.parent === newFlow[i].id || node.parent === "") {
@@ -1347,7 +1401,7 @@ class D3Tree {
       }
 
       if (!notHaveParent) {
-        const resp = invertParent.find(function(fatherId) {
+        const resp = invertParent.find(function (fatherId) {
           if (fatherId === node.parent) {
             return true
           } else {
