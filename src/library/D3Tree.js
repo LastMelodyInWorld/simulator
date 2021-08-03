@@ -9,6 +9,10 @@ export const actionsType = {
   add: "addNode",
   addIn: "addNodeIn",
   addOut: "addNodeOut",
+  addSS: "addNodeSS",
+  addSE: "addNodeSE",
+  addEE: "addNodeEE",
+  addEE: "addNodeES",
   remove: "removeNode",
   addBalance: "addBalance",
   removeBalance: "removeBalance",
@@ -203,12 +207,6 @@ class D3Tree {
    * no localstorage esse dado sera carregado
    */
   inicializeData(reset, changed) {
-    // console.log("###############")
-    // console.log("changed here ->" + changed)
-    // console.log("###############")
-    // console.log("###############")
-    // console.log("reset here ->" + reset)
-    // console.log("###############")
     if (changed) {
       this.data = {
         name: "A1",
@@ -667,79 +665,6 @@ class D3Tree {
     selected.children.push(newNode)
     selected.data.children.push(newNode.data)
     this.redrawTree()
-  }
-
-  copiarSubTree(selected, item) {
-    let newCopi = {
-      children: [
-        {
-          children: [],
-          value: 0,
-          idBalance: 0,
-          name: "F1.1",
-          description: "",
-          class: "(nenhuma)",
-          resource: "Bezerras desmamadas",
-          unit: "cab",
-          category: "BOVINOS",
-          duration: "0",
-          factor: "1"
-        },
-        {
-          children: [],
-          value: 0,
-          idBalance: 0,
-          name: "F1.2",
-          description: "",
-          class: "(nenhuma)",
-          resource: "Bezerras desmamadas",
-          unit: "cab",
-          category: "BOVINOS",
-          duration: "0",
-          factor: "1"
-        }
-      ],
-      value: 0,
-      idBalance: 0,
-      name: "F1",
-      description: "",
-      class: "(nenhuma)",
-      resource: "Bezerras desmamadas",
-      unit: "cab",
-      category: "BOVINOS",
-      duration: "0",
-      factor: "1"
-    }
-
-    let newNode = d3.hierarchy(newCopi)
-
-    // console.log("&&&&&&&&&&&&")
-    // console.log(newNode)
-    console.log(newCopi)
-    console.log(selected)
-    // console.log(selected.data)
-    // console.log("&&&&&&&&&&&&")
-    
-    newNode.depth = selected.depth + 1
-    newNode.height = selected.height - 1
-    newNode.parent = selected
-    newNode.id = Date.now()
-
-    if (!selected.children) {
-      selected.children = []
-      selected.data.children = []
-    }
-
-    selected.children.push(newNode)
-    selected.data.children.push(newNode.data)
-    this.redrawTree() 
-
-    // selected.children.push(newNode.children.name("F1.1"))
-    // this.redrawTree()
-
-    // verificar se o push está certo
-    // selected.data.replace(newCopi)
-    // this.redrawTree()
   }
 
   /**

@@ -101,9 +101,24 @@ export default {
           value: actionsType.addOut
         },
         {
-          text: 'Copi',
-          icon: 'arrow_downward',
-          value: actionsType.copia2
+          text: 'SS',
+          icon: 'add',
+          value: actionsType.addSS
+        },
+        {
+          text: 'SE',
+          icon: 'add',
+          value: actionsType.addSE
+        },
+        {
+          text: 'EE',
+          icon: 'add',
+          value: actionsType.addEE
+        },
+        {
+          text: 'ES',
+          icon: 'add',
+          value: actionsType.addES
         },
         {
           text: 'Excluir',
