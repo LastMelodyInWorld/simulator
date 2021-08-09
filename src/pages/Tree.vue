@@ -16,6 +16,16 @@
 
     <TreeConfig :config="config" @executeModelCommand="executeModelCommand" />
 
+    <TreeChildrens 
+      :childrens="childrens"
+      :optionSelect="optionSelect"
+      :selectedNode="selectedNode"
+      :selectedIndex="selectedIndex"
+      :nodeTypeChildren="nodeTypeChildren"
+      @setTypeClickTree="setTypeClickTree"
+      @confirmEditNode="confirmEditNode"
+    />
+
     <v-content>
       <div class="fluxograma" ref="fluxograma"></div>
     </v-content>
@@ -29,11 +39,12 @@ import jsonFernando from '../jsons/jsonFernando.json'
 import TreeMenu from '../components/TreeMenu'
 import TreeModal from '../components/TreeModal'
 import TreeConfig from '../components/TreeConfig'
+import TreeChildrens from '../components/TreeChildrens'
 import D3TreeClass, { actionsType, nodesType } from '../library/D3Tree'
 const tree = new D3TreeClass()
 
 export default {
-  components: { TreeMenu, TreeModal, TreeConfig },
+  components: { TreeMenu, TreeModal, TreeConfig, TreeChildrens },
   data () {
     return {
       optionSelect: {
@@ -43,8 +54,11 @@ export default {
         factor: []
       },
       selectedNode: null,
+      selectedIndex: null,
+      nodeTypeChildren: null,
       modal: false,
       config: false,
+      childrens: false,
       mini: false,
       TypeOfActionSelectedNow: actionsType.edit
     }
@@ -71,32 +85,38 @@ export default {
     handleOnclickFunction (selected, index) {
       switch (this.TypeOfActionSelectedNow) {
         case actionsType.addIn:
-          // console.log(nodesType.out)
-          // console.log(nodesType.in)
-          tree.addChildrenNode(selected, index, nodesType.in)
+          tree.addChildrenNode(selected, index, nodesType.in, true)
           break
         case actionsType.addOut:
-          tree.addChildrenNode(selected, index, nodesType.out)
+          tree.addChildrenNode(selected, index, nodesType.out, true)
           break
         case actionsType.addSS:
-          tree.addChildrenNode(selected, index, nodesType.out)
-          tree.addChildrenNode(selected, index, nodesType.out)
+          if (tree.checkIfHavePermission(selected, nodesType.out, true)) {
+            tree.addChildrenNode(selected, index, nodesType.out, 'OUT')
+            tree.addChildrenNode(selected, index, nodesType.out, 'OUT')
+          }
           break
         case actionsType.addSE:
-          if (tree.addChildrenNode(selected, index, nodesType.out) === false) {
-            break
+          if (tree.checkIfHavePermission(selected, nodesType.out, true)) {
+            if (tree.addChildrenNode(selected, index, nodesType.out, 'OUT') === false) {
+              break
+            }
+            tree.addChildrenNode(selected, index, nodesType.in, 'IN')
           }
-          tree.addChildrenNode(selected, index, nodesType.in)
           break
         case actionsType.addEE:
-          tree.addChildrenNode(selected, index, nodesType.in)
-          tree.addChildrenNode(selected, index, nodesType.in)
+          if (tree.checkIfHavePermission(selected, nodesType.in, true)) {
+            tree.addChildrenNode(selected, index, nodesType.in, 'IN')
+            tree.addChildrenNode(selected, index, nodesType.in, 'IN')
+          }
           break
         case actionsType.addES:
-          if (tree.addChildrenNode(selected, index, nodesType.in) === false) {
-            break
+          if (tree.checkIfHavePermission(selected, nodesType.in, true)) {
+            if (tree.addChildrenNode(selected, index, nodesType.in, 'IN') === false) {
+              break
+            }
+            tree.addChildrenNode(selected, index, nodesType.out, 'OUT')
           }
-          tree.addChildrenNode(selected, index, nodesType.out)
           break
         case actionsType.remove:
           tree.removeChildrenNode(selected, index)
@@ -111,6 +131,14 @@ export default {
           this.selectedNode = selected
           this.modal = true
           // Não limpa o nó selecionado caso o modal esteja aberto
+          tree.setModalstate(true)
+          break
+        case actionsType.childrens:
+          this.selectedNode = selected
+          this.selectedIndex = index
+          this.nodeTypeChildren = nodesType
+          this.childrens = true
+          // Não limpa o nó selecionado caso o childrens esteja aberto
           tree.setModalstate(true)
           break
         default:
@@ -135,7 +163,7 @@ export default {
      * @param command identifica o tipo de commando executado
      */
     executeModelCommand (command, param) {
-      console.log(`comando=${command} -> ${param}`)
+      // console.log(`comando=${command} -> ${param}`)
       switch (command) {
         case actionsType.undo:
           tree.undo()
@@ -181,6 +209,7 @@ export default {
     confirmEditNode (isNotModified) {
       tree.redrawTree(isNotModified)
       this.modal = false
+      this.childrens = false
       tree.setModalstate(false)
     },
 

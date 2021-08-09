@@ -22,9 +22,11 @@ const error = {
   cannotFirstClickedNonTerminal:
     'Balanço tem que começar com terminal.',
   cannotchanged:
-    'não pode mudar o inicio da árvore quando tem nós adicionados',
+    'Não pode mudar o inicio da árvore quando tem nós adicionados',
   cannotClickedTwoNonTerminal:
-    'Balanço não pode ser feito em dois nós terminais.'
+    'Balanço não pode ser feito em dois nós terminais.',
+  cannotAddTerminal:
+    'Não pode adicionar se o nó não for terminal'
 }
 
 export default error

@@ -101,24 +101,9 @@ export default {
           value: actionsType.addOut
         },
         {
-          text: 'SS',
-          icon: 'add',
-          value: actionsType.addSS
-        },
-        {
-          text: 'SE',
-          icon: 'add',
-          value: actionsType.addSE
-        },
-        {
-          text: 'EE',
-          icon: 'add',
-          value: actionsType.addEE
-        },
-        {
-          text: 'ES',
-          icon: 'add',
-          value: actionsType.addES
+          text: 'Childrens',
+          icon: 'mediation',
+          value: actionsType.childrens
         },
         {
           text: 'Excluir',

@@ -22,6 +22,7 @@ export const actionsType = {
   save: "save",
   reset: "reset",
   config: "config",
+  childrens: "childrens",
   mini: "mini",
   orientation: "orientation",
   nodeh: "nodeh",
@@ -95,6 +96,22 @@ const orientationTree = {
   }
 }
 
+/* const subTree = [
+  S = {
+    children: [],
+    value: 0,
+    idBalance: 0,
+    name: "S",
+    description: "",
+    class: "(nenhuma)",
+    resource: "Bezerras desmamadas",
+    unit: "cab",
+    category: "BOVINOS",
+    duration: "0",
+    factor: "1"
+  }
+] */
+
 class D3Tree {
   constructor() {
     this.circleColor0 = "#009933"
@@ -135,10 +152,10 @@ class D3Tree {
    */
   setJsonFromPP(json) {
     this.json = json
-    console.log("##########################")
-    console.log("json recebido da plataforma")
+    // console.log("##########################")
+    // console.log("json recebido da plataforma")
     console.log(json)
-    console.log("##########################")
+    // console.log("##########################")
   }
 
   /**
@@ -629,26 +646,49 @@ class D3Tree {
   /**
    * Adiciona um novo nó filho ao nó selecionado
    */
-  addChildrenNode(selected, i, nodeType) {
+  addChildrenNode(selected, i, nodeType, add) {
     if (!this.checkIfHavePermission(selected, nodeType)) {
       return false
     }
 
-    let newNodeData = {
+    let newNodeData
+
+    let obj = {
       children: [],
       value: nodeType,
       idBalance: 0,
-      name: "",
+      name: add,
       description: "",
-      class: DEFAULT.class,
-      resource: selected.data.resource,
-      unit: selected.data.unit,
-      category: selected.data.category,
-      duration: DEFAULT.duration,
-      factor: DEFAULT.factor
+      class: "(nenhuma)",
+      resource: "Bezerras desmamadas",
+      unit: "cab",
+      category: "BOVINOS",
+      duration: "0",
+      factor: "1"
     }
 
-    //Cria um novo nó com base em newNodeData usando d3.hierarchy()
+    if (add === true) {
+      newNodeData = {
+        children: [],
+        value: nodeType,
+        idBalance: 0,
+        name: "",
+        description: "",
+        class: DEFAULT.class,
+        resource: selected.data.resource,
+        unit: selected.data.unit,
+        category: selected.data.category,
+        duration: DEFAULT.duration,
+        factor: DEFAULT.factor
+      }
+    } else {
+      // newNodeData = subTree[this.add]
+      // newNodeData.value = nodeType
+      newNodeData = obj
+    }
+
+    console.log(newNodeData)
+    // Cria um novo nó com base em newNodeData usando d3.hierarchy()
     let newNode = d3.hierarchy(newNodeData)
 
     // Adiciona propriedades(filho, pai, altura) ao nó
@@ -905,7 +945,7 @@ class D3Tree {
   /**
    * Verifica se tem permissão para adicionar um novo nó
    */
-  checkIfHavePermission(fatherNode, newNodeType) {
+  checkIfHavePermission(fatherNode, newNodeType, add) {
     const descendants = this.root.descendants()
     var fatherType = fatherNode.data.value
 
@@ -923,6 +963,12 @@ class D3Tree {
     //Não é possível incluir novas Arestas ao Vértice balanço sem filhos
     if (fatherNode.data.idBalance > 0 && !fatherNode.children) {
       this.msgAlertUser(error.cannotAddNodeInBalanceChildren)
+      return false
+    }
+
+    if (fatherNode.children && add) {
+      this.msgAlertUser(error.cannotAddTerminal)
+      this.resetNodeSelected(true)
       return false
     }
 
