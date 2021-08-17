@@ -101,11 +101,6 @@ export default {
           value: actionsType.addOut
         },
         {
-          text: 'Childrens',
-          icon: 'mediation',
-          value: actionsType.childrens
-        },
-        {
           text: 'Excluir',
           icon: 'close',
           value: actionsType.remove
@@ -130,6 +125,11 @@ export default {
        * Vetor usado para construir o submenu de Modelo
        */
       menuModel: [
+        {
+          text: 'Childrens',
+          icon: 'mediation',
+          value: actionsType.childrens
+        },
         {
           text: 'Tratamento',
           icon: 'swap_horiz',

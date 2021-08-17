@@ -9,7 +9,6 @@
           v-for="item in menuFlow"
           :key="item.value"
           @click="setTypeOfClick(item.value)"
-          :class="isActive(item.value)"
           :ripple="true"
         >
           <v-list-tile-action>
@@ -27,7 +26,7 @@
 import { actionsType } from '../library/D3Tree'
 
 export default {
-  props: ['childrens', 'TypeOfActionSelectedNow', 'optionSelect', 'selectedNode', 'tree'],
+  props: ['childrens'],
   data () {
     return {
       menuFlow: [
@@ -58,10 +57,6 @@ export default {
     setTypeOfClick (type) {
       this.$emit('setTypeClickTree', type)
       this.$emit('confirmEditNode', false)
-    },
-    isActive (itemValue) {
-      if (this.TypeOfActionSelectedNow === itemValue) return 'active'
-      else return ''
     }
   }
 }
