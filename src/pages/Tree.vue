@@ -18,6 +18,7 @@
 
     <TreeChildrens 
       :childrens="childrens"
+      :TypeOfActionSelectedNow="TypeOfActionSelectedNow"
       @setTypeClickTree="setTypeClickTree"
       @confirmEditNode="confirmEditNode"
     />
@@ -129,6 +130,11 @@ export default {
           // Não limpa o nó selecionado caso o modal esteja aberto
           tree.setModalstate(true)
           break
+        case actionsType.childrens:
+          this.selectedNode = selected
+          this.treeChildren = tree
+          this.childrens = !this.childrens
+          break
         default:
           tree.addChildrenNode(selected, index, nodesType.in)
       }
@@ -170,9 +176,6 @@ export default {
           break
         case actionsType.reset:
           this.removeTreeBackend()
-          break
-        case actionsType.childrens:
-          this.childrens = !this.childrens
           break
         case actionsType.config:
           this.config = !this.config

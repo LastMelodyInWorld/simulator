@@ -30,7 +30,6 @@ export const actionsType = {
   nodeh: "nodeh",
   changed1: "changed1",
   changed2: "changed2",
-  copia2: "copia2",
   nodew: "nodew"
 }
 
@@ -142,10 +141,6 @@ class D3Tree {
    */
   getJsonData() {
     // const jsonAtual = JSON.stringify(this.data)
-    // console.log("##########################")
-    // console.log("json atual da arvore")
-    // console.log(jsonAtual)
-    // console.log("##########################")
     return JSON.stringify(this.data)
   }
 
@@ -154,10 +149,6 @@ class D3Tree {
    */
   setJsonFromPP(json) {
     this.json = json
-    // console.log("##########################")
-    // console.log("json recebido da plataforma")
-    console.log(json)
-    // console.log("##########################")
   }
 
   /**
@@ -553,7 +544,9 @@ class D3Tree {
       .classed("link", true)
       .style("marker-end", this.selectArrowSide)
       .style("stroke", this.selectStrokeColorPath)
-      // .style("stroke-width", d => Math.max(7, 1))
+      // link da ideia de como adicionar largura na aresta
+      // https://stackoverflow.com/questions/44441577/how-to-change-edge-thickness-in-d3-js
+      // .style("stroke-width", d => Math.max(4, 1))  adicionando largura das arestas
       .attr("x1", this.selectX1ByType)
       .attr("x2", this.selectX2ByType)
       .attr("y1", this.selectY1ByType)
@@ -653,11 +646,6 @@ class D3Tree {
       return false
     }
 
-    console.log("@@@@@@@@@@@@")
-    console.log(selected.depth)
-    console.log(selected.data.name)
-    console.log("@@@@@@@@@@@@")
-
     let newNodeData
 
     let obj = {
@@ -671,9 +659,7 @@ class D3Tree {
       unit: "cab",
       category: "BOVINOS",
       duration: "0",
-      factor: "1",
-      depth: selected.depth,
-      father: selected.data.name
+      factor: "1"
     }
 
     if (add === true) {
@@ -688,16 +674,14 @@ class D3Tree {
         unit: selected.data.unit,
         category: selected.data.category,
         duration: DEFAULT.duration,
-        factor: DEFAULT.factor,
-        father: selected.data.name
+        factor: DEFAULT.factor
       }
     } else {
       // futuramente adicionar estrutura para guardar novos modelos de nós
-      // atualmente trabalhando apenas com um nó gerenico para teste
+      // atualmente trabalhando apenas com um nó generico para teste
       newNodeData = obj
     }
 
-    console.log(newNodeData)
     // Cria um novo nó com base em newNodeData usando d3.hierarchy()
     let newNode = d3.hierarchy(newNodeData)
 
@@ -1013,65 +997,6 @@ class D3Tree {
   save() {
     this.resetNodeSelected(true)
     localStorage.data = JSON.stringify(this.data)
-
-    var obj = JSON.parse(localStorage.data)
-
-    console.log(localStorage.data)
-
-    console.log("leaves sendo impressa")
-    /*var leaves = traverse(obj).reduce(function (acc, x) {
-      // verifica se é nó terminal
-      if (this.isLeaf && this.key === "children") {
-        //console.log(this.parent.key)
-        // verifica se é o nó mais a esquerda/primeiro nó
-        if (this.parent.key !== "0") {
-          //console.log(this.remove(x))
-          this.remove(x)
-        }
-      }
-      //return acc
-    }, [])*/
-
-
-    var leaves = traverse(obj).reduce(function (acc, x) {
-      
-      if(this.notLeaf) acc.push(x)
-      else if (this.isLeaf && this.key === "children") {
-        //console.log(this.parent.key)
-        if (this.parent.key !== "0") {
-          //console.log(this.remove(x))
-          acc.push(x)
-        }
-      }
-      return acc
-    }, [])
-
-    //var result = traverse(obj).forEach
-
-    
-    console.log(leaves)
-    console.dir(leaves)
-    //console.log("obj redefinido")
-    //console.log(obj)
-
-    console.log("final das leaves")
-    var i = 0
-    function mostrarConteudo(obj) {
-      Object.keys(obj).forEach(function(chave) {
-        var prop = obj[chave]
-
-        if (typeof prop === 'object') {
-          mostrarConteudo(prop, chave)
-          i++
-        }
-        else {
-          console.log(prop, i)
-        }
-      });
-    }
-    
-    mostrarConteudo(obj);
-
   }
 
   /**
@@ -1080,7 +1005,6 @@ class D3Tree {
   load() {
     if (localStorage.data) {
       this.data = JSON.parse(localStorage.data)
-      console.log(this.data)
     }
   }
 

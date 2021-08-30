@@ -1,0 +1,2269 @@
+{
+    "idSimulation": "68ca096d-4702-496e-8284-fc5f827ecc7f",
+    "idSystem": 72,
+    "idModel": 18,
+    "simulationData": {
+        "ARROBA": 15,
+        "graph": {
+            "nodes": {
+                "n_1_VeBg_Venda de bois gordos.": {
+                    "formula": "CONFINAMENTO+INICIO_AGUAS",
+                    "stages": [
+                      "Venda"
+                    ],
+                    "flows": [
+                      "n_2_TeBm_Terminação em confinamento de bois magros.-n_1_VeBg_Venda de bois gordos."
+                    ],
+                    "duration": 200,
+                    "type": "terminal_saida_producao"
+                },
+                "n_2_TeBm_Terminação em confinamento de bois magros.": {
+                    "formula": "CONFINAMENTO",
+                    "stages": [
+                      "Confinamento"
+                    ],
+                    "flows": [
+                      "n_2_TeBm_Terminação em confinamento de bois magros.-n_1_VeBg_Venda de bois gordos.",
+                      "n_3_AgBo_Recria nas águas de bezerros.-n_2_TeBm_Terminação em confinamento de bois magros."
+                    ],
+                    "duration": 110,
+                    "type": "est_producao"
+                },
+                "n_3_AgBo_Recria nas águas de bezerros.": {
+                    "formula": "AGUAS",
+                    "stages": [
+                      "Recria nas águas"
+                    ],
+                    "flows": [
+                      "n_3_AgBo_Recria nas águas de bezerros.-n_2_TeBm_Terminação em confinamento de bois magros.",
+                      "n_8_SeBo_Recria na seca de bezerros.-n_3_AgBo_Recria nas águas de bezerros."
+                    ],
+                    "duration": 212,
+                    "type": "est_producao"
+                },
+                "n_8_SeBo_Recria na seca de bezerros.": {
+                    "formula": "SECA",
+                    "stages": [
+                      "Recria na seca"
+                    ],
+                    "flows": [
+                      "n_8_SeBo_Recria na seca de bezerros.-n_3_AgBo_Recria nas águas de bezerros.",
+                      "b_12_1_Bo_Balanço de bezerros desmamados.-n_8_SeBo_Recria na seca de bezerros."
+                    ],
+                    "duration": 153,
+                    "type": "est_producao"
+                },
+                "b_12_1_Bo_Balanço de bezerros desmamados.": {
+                    "formula": "0",
+                    "stages": [
+                      "Balanço"
+                    ],
+                    "flows": [
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-b_12_1_Bo_Balanço de bezerros desmamados.",
+                      "b_12_1_Bo_Balanço de bezerros desmamados.-n_8_SeBo_Recria na seca de bezerros.",
+                      "n_44_AlMv_Aleitamento de multíparas vazias.-b_12_1_Bo_Balanço de bezerros desmamados.",
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-b_12_1_Bo_Balanço de bezerros desmamados."
+                      ],
+                    "duration": 0,
+                    "type": "est_reuso"
+                },
+                "n_16_AlMp_Aleitamento de multíparas prenhes.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                      "Aleitamento"
+                    ],
+                    "flows": [
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-b_12_1_Bo_Balanço de bezerros desmamados.",
+                      "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-n_16_AlMp_Aleitamento de multíparas prenhes.",
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-n_18_ReMs_Reserva na seca de multíparas.",
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-n_19_BaMp_Venda de bezerras desmamadas.",
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-b_20_10_GeMs_Gestação na seca de multíparas solteiras.",
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-b_21_4_EnMs_Engorda na seca de multíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_producao"
+                },
+                "n_17_DiMp_Diagnose de prenhez de multíparas paridas.": {
+                    "formula": "DIAGNOSE",
+                    "stages": [
+                      "Diagnose"
+                    ],
+                    "flows": [
+                      "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-n_16_AlMp_Aleitamento de multíparas prenhes.",
+                      "n_25_MoMp_Monta de multíparas paridas.-n_17_DiMp_Diagnose de prenhez de multíparas paridas.",
+                      "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-b_26_9_GaMs_Gestação nas águas de multíparas solteiras.",
+                      "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-b_27_6_EaMs1_Engorda nas águas de multíparas falhadas."
+                    ],
+                    "duration": 59,
+                    "type": "est_producao"
+                },
+                "n_25_MoMp_Monta de multíparas paridas.": {
+                    "formula": "MONTA",
+                    "stages": [
+                      "Monta"
+                    ],
+                    "flows": [
+                      "n_25_MoMp_Monta de multíparas paridas.-n_17_DiMp_Diagnose de prenhez de multíparas paridas.",
+                      "n_35_PuMp_Puerpério de multíparas.-n_25_MoMp_Monta de multíparas paridas.",
+                      "n_25_MoMp_Monta de multíparas paridas.-b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras."
+                    ],
+                    "duration": 92,
+                    "type": "est_producao"
+                },
+                "n_35_PuMp_Puerpério de multíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                      "Puerpério"
+                    ],
+                    "flows": [
+                      "n_35_PuMp_Puerpério de multíparas.-n_25_MoMp_Monta de multíparas paridas.",
+                      "b_42_3_Mp_Balanço de multíparas paridas.-n_35_PuMp_Puerpério de multíparas.",
+                      "n_35_PuMp_Puerpério de multíparas.-b_31_7_MoMs_Monta de multíparas solteiras.",
+                      "n_35_PuMp_Puerpério de multíparas.-n_44_AlMv_Aleitamento de multíparas vazias."
+                    ],
+                    "duration": 30,
+                    "type": "est_producao"
+                },
+                "b_42_3_Mp_Balanço de multíparas paridas.": {
+                    "formula": "0",
+                    "stages": [
+                      "Balanço"
+                    ],
+                    "flows": [
+                      "n_48_GePs_Gestação na seca de primíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.",
+                      "n_76_GeMs_Gestação na seca de multíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.",
+                      "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.",
+                      "b_42_3_Mp_Balanço de multíparas paridas.-n_35_PuMp_Puerpério de multíparas."
+                    ],
+                    "duration": 0,
+                    "type": "est_reuso"
+                },
+                "n_48_GePs_Gestação na seca de primíparas solteiras.": {
+                    "formula": "SECA",
+                    "stages": [
+                      "Gestação na seca"
+                    ],
+                    "flows": [
+                      "n_48_GePs_Gestação na seca de primíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.",
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-n_48_GePs_Gestação na seca de primíparas solteiras.",
+                      "n_48_GePs_Gestação na seca de primíparas solteiras.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento."                    
+                    ],
+                    "duration": 153,
+                    "type": "est_producao"
+                },
+                "n_59_AlPp_Aleitamento de primíparas prenhes.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                      "Aleitamento"
+                    ],
+                    "flows": [
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-n_48_GePs_Gestação na seca de primíparas solteiras.",
+                      "n_69_DiPp_Diagnose de prenhez de primíparas paridas.-n_59_AlPp_Aleitamento de primíparas prenhes.",
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-b_12_1_Bo_Balanço de bezerros desmamados.",
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-n_19_BaPp_Venda de bezerras desmamadas.",
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-b_72_14_RePs_Reserva na seca de primíparas falhadas."
+                    ],
+                    "duration": 31,
+                    "type": "est_producao"
+                },
+                "n_69_DiPp_Diagnose de prenhez de primíparas paridas.": {
+                    "formula": "DIAGNOSE",
+                    "stages": [
+                      "Diagnose"
+                    ],
+                    "flows": [
+                      "n_69_DiPp_Diagnose de prenhez de primíparas paridas.-n_59_AlPp_Aleitamento de primíparas prenhes.",
+                      "n_85_MoPp_Monta de primíparas paridas.-n_69_DiPp_Diagnose de prenhez de primíparas paridas.",
+                      "n_69_DiPp_Diagnose de prenhez de primíparas paridas.-b_86_11_GaPs_Gestação nas águas de primíparas solteiras."
+                    ],
+                    "duration": 59,
+                    "type": "est_producao"
+                },
+                "n_85_MoPp_Monta de primíparas paridas.": {
+                    "formula": "MONTA",
+                    "stages": [
+                      "Monta"
+                    ],
+                    "flows": [
+                      "n_85_MoPp_Monta de primíparas paridas.-n_69_DiPp_Diagnose de prenhez de primíparas paridas.",
+                      "n_101_PuPp_Puerpério de primíparas.-n_85_MoPp_Monta de primíparas paridas.",
+                      "n_85_MoPp_Monta de primíparas paridas.-b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras."
+                    ],
+                    "duration": 92,
+                    "type": "est_producao"
+                },
+                "n_101_PuPp_Puerpério de primíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                      "Puerpério"
+                    ],
+                    "flows": [
+                      "n_101_PuPp_Puerpério de primíparas.-n_85_MoPp_Monta de primíparas paridas.",
+                      "n_112_GeNu_Gestação na seca de nulíparas.-n_101_PuPp_Puerpério de primíparas.",
+                      "n_101_PuPp_Puerpério de primíparas.-b_169_12_MoPs_Monta de primíparas solteiras."
+                    ],
+                    "duration": 30,
+                    "type": "est_producao"
+                },
+                "n_112_GeNu_Gestação na seca de nulíparas.": {
+                    "formula": "SECA",
+                    "stages": [
+                      "Gestação na seca"
+                    ],
+                    "flows": [
+                      "n_112_GeNu_Gestação na seca de nulíparas.-n_101_PuPp_Puerpério de primíparas.",
+                      "n_112_GaNu_Gestação nas águas de nulíparas.-n_112_GeNu_Gestação na seca de nulíparas.",
+                      "n_112_GeNu_Gestação na seca de nulíparas.-b_118_13_EaNu2_Engorda nas águas de nulíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_producao"
+                },
+                "n_112_GaNu_Gestação nas águas de nulíparas.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                      "Gestação na seca"
+                    ],
+                    "flows": [
+                      "n_112_GaNu_Gestação nas águas de nulíparas.-n_112_GeNu_Gestação na seca de nulíparas.",
+                      "n_117_DiNu_Diagnose de prenhez de nulíparas.-n_112_GaNu_Gestação nas águas de nulíparas.",
+                      "n_112_GaNu_Gestação nas águas de nulíparas.-b_118_13_EnNu_Engorda na seca de nulíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_producao"
+                },
+                "n_117_DiNu_Diagnose de prenhez de nulíparas.": {
+                    "formula": "DIAGNOSE",
+                    "stages": [
+                      "Diagnose"
+                    ],
+                    "flows": [
+                      "n_117_DiNu_Diagnose de prenhez de nulíparas.-n_112_GaNu_Gestação nas águas de nulíparas.",
+                      "n_128_MoNu_Monta de nulíparas.-n_117_DiNu_Diagnose de prenhez de nulíparas.",
+                      "n_117_DiNu_Diagnose de prenhez de nulíparas.-n_129_EaNu1_Engorda nas águas de nulíparas falhadas."
+                    ],
+                    "duration": 59,
+                    "type": "est_producao"
+                },
+                "n_128_MoNu_Monta de nulíparas.": {
+                    "formula": "MONTA",
+                    "stages": [
+                      "Monta"
+                    ],
+                    "flows": [
+                      "n_128_MoNu_Monta de nulíparas.-n_117_DiNu_Diagnose de prenhez de nulíparas.",
+                      "n_138_AgNu_Recria nas águas de nulíparas.-n_128_MoNu_Monta de nulíparas."
+                    ],
+                    "duration": 92,
+                    "type": "est_producao"
+                },
+                "n_138_AgNu_Recria nas águas de nulíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                      "Recria nas águas"
+                    ],
+                    "flows": [
+                      "n_138_AgNu_Recria nas águas de nulíparas.-n_128_MoNu_Monta de nulíparas.",
+                      "n_156_SeNu_Recria na seca de nulíparas.-n_138_AgNu_Recria nas águas de nulíparas."
+                    ],
+                    "duration": 30,
+                    "type": "est_producao"
+                },
+                "n_156_SeNu_Recria na seca de nulíparas.": {
+                    "formula": "SECA",
+                    "stages": [
+                      "Recria na seca"
+                    ],
+                    "flows": [
+                      "n_156_SeNu_Recria na seca de nulíparas.-n_138_AgNu_Recria nas águas de nulíparas.",
+                      "n_173_AgBa_Recria nas águas de bezerras.-n_156_SeNu_Recria na seca de nulíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_producao"
+                },
+                "n_173_AgBa_Recria nas águas de bezerras.": {
+                    "formula": "AGUAS",
+                    "stages": [
+                      "Recria nas águas"
+                    ],
+                    "flows": [
+                      "n_173_AgBa_Recria nas águas de bezerras.-n_156_SeNu_Recria na seca de nulíparas.",
+                      "n_185_SeBa_Recria na seca de bezerras.-n_173_AgBa_Recria nas águas de bezerras."
+                    ],
+                    "duration": 212,
+                    "type": "est_producao"
+                },
+                "n_185_SeBa_Recria na seca de bezerras.": {
+                    "formula": "SECA",
+                    "stages": [
+                      "Recria na seca"
+                    ],
+                    "flows": [
+                      "n_185_SeBa_Recria na seca de bezerras.-n_173_AgBa_Recria nas águas de bezerras.",
+                      "n_207_CoBa_Compra de bezerras desmamadas.-n_185_SeBa_Recria na seca de bezerras."
+                    ],
+                    "duration": 153,
+                    "type": "est_producao"
+                },
+                "n_207_CoBa_Compra de bezerras desmamadas.": {
+                    "formula": "0",
+                    "stages": [
+                      "(nenhuma)"
+                    ],
+                    "flows": [
+                      "n_207_CoBa_Compra de bezerras desmamadas.-n_185_SeBa_Recria na seca de bezerras."
+                    ],
+                    "duration": 0,
+                    "type": "est_producao"
+                },
+                "n_129_EaNu1_Engorda nas águas de nulíparas falhadas.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                      "Engorda nas águas"
+                    ],
+                    "flows": [
+                      "n_117_DiNu_Diagnose de prenhez de nulíparas.-n_129_EaNu1_Engorda nas águas de nulíparas falhadas.",
+                      "n_129_EaNu1_Engorda nas águas de nulíparas falhadas.-b_118_13_EnNu_Engorda na seca de nulíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_tratamento"
+                },
+                "b_118_13_EnNu_Engorda na seca de nulíparas.": {
+                    "formula": "0",
+                    "stages": [
+                      "Engorda na seca"
+                    ],
+                    "flows": [
+                      "b_118_13_EnNu_Engorda na seca de nulíparas.-n_144_EnNu_Engorda na seca de nulíparas.",
+                      "n_129_EaNu1_Engorda nas águas de nulíparas falhadas.-b_118_13_EnNu_Engorda na seca de nulíparas.",
+                      "n_112_GaNu_Gestação nas águas de nulíparas.-b_118_13_EnNu_Engorda na seca de nulíparas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_144_EnNu_Engorda na seca de nulíparas.": {
+                    "formula": "SECA",
+                    "stages": [
+                        "Engorda na seca"
+                    ],
+                    "flows": [
+                      "b_118_13_EnNu_Engorda na seca de nulíparas.-n_144_EnNu_Engorda na seca de nulíparas.",
+                      "n_144_EnNu_Engorda na seca de nulíparas.-b_118_13_EaNu2_Engorda nas águas de nulíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "b_118_13_EaNu2_Engorda nas águas de nulíparas.": {
+                    "formula": "0",
+                    "stages": [
+                      "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_118_13_EaNu2_Engorda nas águas de nulíparas.-n_144_EaNu2_Engorda nas águas de nulíparas.",
+                      "n_144_EnNu_Engorda na seca de nulíparas.-b_118_13_EaNu2_Engorda nas águas de nulíparas.",
+                      "n_112_GeNu_Gestação na seca de nulíparas.-b_118_13_EaNu2_Engorda nas águas de nulíparas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_144_EaNu2_Engorda nas águas de nulíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                        "Engorda nas águas"
+                    ],
+                    "flows": [
+                      "b_118_13_EaNu2_Engorda nas águas de nulíparas.-n_144_EaNu2_Engorda nas águas de nulíparas.",
+                      "n_144_EaNu2_Engorda nas águas de nulíparas.-n_162_VeNg_Venda de nulíparas gordas."
+                    ],
+                    "duration": 30,
+                    "type": "est_tratamento"
+                },
+                "n_162_VeNg_Venda de nulíparas gordas.": {
+                    "formula": "0",
+                    "stages": [
+                        "Venda"
+                    ],
+                    "flows": [
+                        "n_144_EaNu2_Engorda nas águas de nulíparas.-n_162_VeNg_Venda de nulíparas gordas."
+                    ],
+                    "duration": 0,
+                    "type": "terminal_saida_tratamento"
+                },
+                "b_169_12_MoPs_Monta de primíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_169_12_MoPs_Monta de primíparas solteiras.-n_113_MoPs_Monta de primíparas solteiras.",
+                      "n_101_PuPp_Puerpério de primíparas.-b_169_12_MoPs_Monta de primíparas solteiras.",
+                      "n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.-b_169_12_MoPs_Monta de primíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_113_MoPs_Monta de primíparas solteiras.": {
+                    "formula": "MONTA",
+                    "stages": [
+                        "Monta"
+                    ],
+                    "flows": [
+                        "b_169_12_MoPs_Monta de primíparas solteiras.-n_113_MoPs_Monta de primíparas solteiras.",
+                        "n_113_MoPs_Monta de primíparas solteiras.-b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras."
+                    ],
+                    "duration": 92,
+                    "type": "est_tratamento"
+                },
+                "b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "Diagnose"
+                    ],
+                    "flows": [
+                      "b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.-n_122_DiPs_Diagnose de prenhez de primíparas solteiras.",
+                      "n_113_MoPs_Monta de primíparas solteiras.-b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.",
+                      "n_85_MoPp_Monta de primíparas paridas.-b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.": {
+                    "formula": "DIAGNOSE",
+                    "stages": [
+                        "Diagnose"
+                    ],
+                    "flows": [
+                        "b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.-n_122_DiPs_Diagnose de prenhez de primíparas solteiras.",
+                        "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-b_86_11_GaPs_Gestação nas águas de primíparas solteiras.",
+                        "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-n_134_RaPs1_Reserva nas águas de primíparas falhadas.",
+                        "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-n_190_EaPs1_Engorda nas águas de primíparas falhadas."
+                    ],
+                    "duration": 59,
+                    "type": "est_tratamento"
+                },
+                "b_86_11_GaPs_Gestação nas águas de primíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "Gestação nas águas"
+                    ],
+                    "flows": [
+                      "b_86_11_GaPs_Gestação nas águas de primíparas solteiras.-n_133_GaPs_Gestação nas águas de primíparas solteiras.",
+                      "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-b_86_11_GaPs_Gestação nas águas de primíparas solteiras.",
+                      "n_69_DiPp_Diagnose de prenhez de primíparas paridas.-b_86_11_GaPs_Gestação nas águas de primíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_133_GaPs_Gestação nas águas de primíparas solteiras.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                        "Gestação nas águas"
+                    ],
+                    "flows": [
+                        "b_86_11_GaPs_Gestação nas águas de primíparas solteiras.-n_133_GaPs_Gestação nas águas de primíparas solteiras.",
+                        "n_133_GaPs_Gestação nas águas de primíparas solteiras.-n_133_GePs1_Gestação na seca de primíparas solteiras.",
+                        "n_133_GaPs_Gestação nas águas de primíparas solteiras.-b_72_14_RePs_Reserva na seca de primíparas falhadas.",
+                        "n_133_GaPs_Gestação nas águas de primíparas solteiras.-b_199_17_EnPs_Engorda na seca de primíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_tratamento"
+                },
+                "n_133_GePs1_Gestação na seca de primíparas solteiras.": {
+                    "formula": "SECA",
+                    "stages": [
+                        "Gestação nas águas"
+                    ],
+                    "flows": [
+                        "n_133_GaPs_Gestação nas águas de primíparas solteiras.-n_133_GePs1_Gestação na seca de primíparas solteiras.",
+                        "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.",
+                        "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.",                        
+                        "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_199_17_EaPs2_Engorda nas águas de primíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "n_134_RaPs1_Reserva nas águas de primíparas falhadas.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                        "Reserva nas águas"
+                    ],
+                    "flows": [
+                        "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-n_134_RaPs1_Reserva nas águas de primíparas falhadas.",
+                        "n_134_RaPs1_Reserva nas águas de primíparas falhadas.-b_72_14_RePs_Reserva na seca de primíparas falhadas."
+                    ],
+                    "duration": 31,
+                    "type": "est_tratamento"
+                },
+                "b_72_14_RePs_Reserva na seca de primíparas falhadas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_72_14_RePs_Reserva na seca de primíparas falhadas.-n_152_RePs_Reserva na seca de primíparas falhadas.",
+                      "n_134_RaPs1_Reserva nas águas de primíparas falhadas.-b_72_14_RePs_Reserva na seca de primíparas falhadas.",
+                      "n_59_AlPp_Aleitamento de primíparas prenhes.-b_72_14_RePs_Reserva na seca de primíparas falhadas.",
+                      "n_133_GaPs_Gestação nas águas de primíparas solteiras.-b_72_14_RePs_Reserva na seca de primíparas falhadas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_152_RePs_Reserva na seca de primíparas falhadas.": {
+                    "formula": "SECA",
+                    "stages": [
+                        "Reserva na seca"
+                    ],
+                    "flows": [
+                      "b_72_14_RePs_Reserva na seca de primíparas falhadas.-n_152_RePs_Reserva na seca de primíparas falhadas.",
+                      "n_152_RePs_Reserva na seca de primíparas falhadas.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.-n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.",
+                      "n_152_RePs_Reserva na seca de primíparas falhadas.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.",
+                      "n_48_GePs_Gestação na seca de primíparas solteiras.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.",
+                      "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                        "Reserva nas águas"
+                    ],
+                    "flows": [
+                        "b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.-n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.",
+                        "n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.-b_169_12_MoPs_Monta de primíparas solteiras."
+                    ],
+                    "duration": 30,
+                    "type": "est_tratamento"
+                },
+                "n_190_EaPs1_Engorda nas águas de primíparas falhadas.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                        "Engorda nas águas"
+                    ],
+                    "flows": [
+                        "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-n_190_EaPs1_Engorda nas águas de primíparas falhadas.",
+                        "n_190_EaPs1_Engorda nas águas de primíparas falhadas.-b_199_17_EnPs_Engorda na seca de primíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_tratamento"
+                },
+                "b_199_17_EnPs_Engorda na seca de primíparas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_199_17_EnPs_Engorda na seca de primíparas.-n_203_EnPs_Engorda na seca de primíparas.",
+                      "n_190_EaPs1_Engorda nas águas de primíparas falhadas.-b_199_17_EnPs_Engorda na seca de primíparas.",
+                      "n_133_GaPs_Gestação nas águas de primíparas solteiras.-b_199_17_EnPs_Engorda na seca de primíparas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_203_EnPs_Engorda na seca de primíparas.": {
+                    "formula": "SECA",
+                    "stages": [
+                        "Engorda na seca"
+                    ],
+                    "flows": [
+                        "b_199_17_EnPs_Engorda na seca de primíparas.-n_203_EnPs_Engorda na seca de primíparas.",
+                        "n_203_EnPs_Engorda na seca de primíparas.-b_199_17_EaPs2_Engorda nas águas de primíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "b_199_17_EaPs2_Engorda nas águas de primíparas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_199_17_EaPs2_Engorda nas águas de primíparas.-n_203_EaPs2_Engorda nas águas de primíparas.",
+                      "n_203_EnPs_Engorda na seca de primíparas.-b_199_17_EaPs2_Engorda nas águas de primíparas.",
+                      "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_199_17_EaPs2_Engorda nas águas de primíparas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_203_EaPs2_Engorda nas águas de primíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                        "Engorda na seca"
+                    ],
+                    "flows": [
+                        "b_199_17_EaPs2_Engorda nas águas de primíparas.-n_203_EaPs2_Engorda nas águas de primíparas.",
+                        "n_203_EaPs2_Engorda nas águas de primíparas.-n_209_VePg_Venda de primíparas solteiras vazias gordas."
+                    ],
+                    "duration": 30,
+                    "type": "est_tratamento"
+                },
+                "n_209_VePg_Venda de primíparas solteiras vazias gordas.": {
+                    "formula": "0",
+                    "stages": [
+                        "Venda"
+                    ],
+                    "flows": [
+                        "n_203_EaPs2_Engorda nas águas de primíparas.-n_209_VePg_Venda de primíparas solteiras vazias gordas."
+                    ],
+                    "duration": 0,
+                    "type": "terminal_saida_tratamento"
+                },
+                "n_44_AlMv_Aleitamento de multíparas vazias.": {
+                    "formula": "AGUAS-PUERPERIO",
+                    "stages": [
+                        "Aleitamento"
+                    ],
+                    "flows": [
+                        "n_35_PuMp_Puerpério de multíparas.-n_44_AlMv_Aleitamento de multíparas vazias.",
+                        "n_44_AlMv_Aleitamento de multíparas vazias.-n_19_BaMv_Venda de bezerras desmamadas.",
+                        "n_44_AlMv_Aleitamento de multíparas vazias.-b_12_1_Bo_Balanço de bezerros desmamados.",
+                        "n_44_AlMv_Aleitamento de multíparas vazias.-b_21_4_EnMs_Engorda na seca de multíparas."
+                    ],
+                    "duration": 182,
+                    "type": "est_tratamento"
+                },
+                "b_31_7_MoMs_Monta de multíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "Monta"
+                    ],
+                    "flows": [
+                      "b_31_7_MoMs_Monta de multíparas solteiras.-n_43_MoMs_Monta de multíparas solteiras.",
+                      "n_35_PuMp_Puerpério de multíparas.-b_31_7_MoMs_Monta de multíparas solteiras.",
+                      "n_18_RaMs_Reserva nas águas de multíparas.-b_31_7_MoMs_Monta de multíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_43_MoMs_Monta de multíparas solteiras.": {
+                    "formula": "MONTA",
+                    "stages": [
+                        "Monta"
+                    ],
+                    "flows": [
+                      "b_31_7_MoMs_Monta de multíparas solteiras.-n_43_MoMs_Monta de multíparas solteiras.",
+                      "n_43_MoMs_Monta de multíparas solteiras.-b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras."                    
+                    ],
+                    "duration": 92,
+                    "type": "est_tratamento"
+                },
+                "b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "Diagnose"
+                    ],
+                    "flows": [
+                      "b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.-n_49_DiMs_Diagnose de prenhez de multíparas solteiras.",
+                      "n_43_MoMs_Monta de multíparas solteiras.-b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.",
+                      "n_25_MoMp_Monta de multíparas paridas.-b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.": {
+                    "formula": "DIAGNOSE",
+                    "stages": [
+                        "Diagnose"
+                    ],
+                    "flows": [
+                        "b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.-n_49_DiMs_Diagnose de prenhez de multíparas solteiras.",
+                        "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.-b_26_9_GaMs_Gestação nas águas de multíparas solteiras.",
+                        "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.-b_27_6_EaMs1_Engorda nas águas de multíparas falhadas."
+                    ],
+                    "duration": 59,
+                    "type": "est_tratamento"
+                },
+                "b_26_9_GaMs_Gestação nas águas de multíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_26_9_GaMs_Gestação nas águas de multíparas solteiras.-n_64_GaMs_Gestação nas águas de multíparas solteiras.",
+                      "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.-b_26_9_GaMs_Gestação nas águas de multíparas solteiras.",
+                      "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-b_26_9_GaMs_Gestação nas águas de multíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_64_GaMs_Gestação nas águas de multíparas solteiras.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                        "Gestação nas águas"
+                    ],
+                    "flows": [
+                        "b_26_9_GaMs_Gestação nas águas de multíparas solteiras.-n_64_GaMs_Gestação nas águas de multíparas solteiras.",
+                        "n_64_GaMs_Gestação nas águas de multíparas solteiras.-b_20_10_GeMs_Gestação na seca de multíparas solteiras.",
+                        "n_64_GaMs_Gestação nas águas de multíparas solteiras.-b_21_4_EnMs_Engorda na seca de multíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_tratamento"
+                },
+                "b_20_10_GeMs_Gestação na seca de multíparas solteiras.": {
+                    "formula": "0",
+                    "stages": [
+                        "Gestação na seca"
+                    ],
+                    "flows": [
+                      "b_20_10_GeMs_Gestação na seca de multíparas solteiras.-n_76_GeMs_Gestação na seca de multíparas solteiras.",
+                      "n_64_GaMs_Gestação nas águas de multíparas solteiras.-b_20_10_GeMs_Gestação na seca de multíparas solteiras.",
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-b_20_10_GeMs_Gestação na seca de multíparas solteiras."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_76_GeMs_Gestação na seca de multíparas solteiras.": {
+                    "formula": "SECA",
+                    "stages": [
+                        "Gestação na seca"
+                    ],
+                    "flows": [
+                        "b_20_10_GeMs_Gestação na seca de multíparas solteiras.-n_76_GeMs_Gestação na seca de multíparas solteiras.",
+                        "n_76_GeMs_Gestação na seca de multíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.",
+                        "n_76_GeMs_Gestação na seca de multíparas solteiras.-b_93_5_EaMs2_Engorda nas águas de multíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.-n_65_EaMs1_Engorda nas águas de multíparas falhadas.",
+                      "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.",
+                      "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.-b_27_6_EaMs1_Engorda nas águas de multíparas falhadas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_65_EaMs1_Engorda nas águas de multíparas falhadas.": {
+                    "formula": "FIM_AGUAS",
+                    "stages": [
+                        "Engorda nas águas"
+                    ],
+                    "flows": [
+                      "b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.-n_65_EaMs1_Engorda nas águas de multíparas falhadas.",
+                      "n_65_EaMs1_Engorda nas águas de multíparas falhadas.-b_21_4_EnMs_Engorda na seca de multíparas."
+                    ],
+                    "duration": 31,
+                    "type": "est_tratamento"
+                },
+                "b_21_4_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_21_4_EnMs_Engorda na seca de multíparas.-n_81_EnMs_Engorda na seca de multíparas.",
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-b_21_4_EnMs_Engorda na seca de multíparas.",
+                      "n_44_AlMv_Aleitamento de multíparas vazias.-b_21_4_EnMs_Engorda na seca de multíparas.",
+                      "n_64_GaMs_Gestação nas águas de multíparas solteiras.-b_21_4_EnMs_Engorda na seca de multíparas.",
+                      "n_65_EaMs1_Engorda nas águas de multíparas falhadas.-b_21_4_EnMs_Engorda na seca de multíparas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_81_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "SECA",
+                    "stages": [
+                        "Engorda na seca"
+                    ],
+                    "flows": [
+                        "b_21_4_EnMs_Engorda na seca de multíparas.-n_81_EnMs_Engorda na seca de multíparas.",
+                        "n_81_EnMs_Engorda na seca de multíparas.-b_93_5_EaMs2_Engorda nas águas de multíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "b_93_5_EaMs2_Engorda nas águas de multíparas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                      "b_93_5_EaMs2_Engorda nas águas de multíparas.-n_97_EaMs2_Engorda nas águas de multíparas.",
+                      "n_76_GeMs_Gestação na seca de multíparas solteiras.-b_93_5_EaMs2_Engorda nas águas de multíparas.",
+                      "n_81_EnMs_Engorda na seca de multíparas.-b_93_5_EaMs2_Engorda nas águas de multíparas."
+                    ],
+                    "duration": 0,
+                    "type": "soma_tratamento"
+                },
+                "n_97_EaMs2_Engorda nas águas de multíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                        "Engorda nas águas"
+                    ],
+                    "flows": [
+                      "b_93_5_EaMs2_Engorda nas águas de multíparas.-n_97_EaMs2_Engorda nas águas de multíparas.",
+                      "n_97_EaMs2_Engorda nas águas de multíparas.-n_108_VeMg_Venda de multíparas solteiras vazias gordas."
+                    ],
+                    "duration": 30,
+                    "type": "est_tratamento"
+                },
+                "n_108_VeMg_Venda de multíparas solteiras vazias gordas.": {
+                    "formula": "0",
+                    "stages": [
+                      "Venda"
+                    ],
+                    "flows": [
+                      "n_97_EaMs2_Engorda nas águas de multíparas.-n_108_VeMg_Venda de multíparas solteiras vazias gordas."
+                    ],
+                    "duration": 0,
+                    "type": "terminal_saida_tratamento"
+                },
+                "n_18_ReMs_Reserva na seca de multíparas.": {
+                    "formula": "SECA",
+                    "stages": [
+                      "Reserva na seca"
+                    ],
+                    "flows": [
+                      "n_16_AlMp_Aleitamento de multíparas prenhes.-n_18_ReMs_Reserva na seca de multíparas.",
+                      "n_18_ReMs_Reserva na seca de multíparas.-n_18_RaMs_Reserva nas águas de multíparas."
+                    ],
+                    "duration": 153,
+                    "type": "est_tratamento"
+                },
+                "n_18_RaMs_Reserva nas águas de multíparas.": {
+                    "formula": "PUERPERIO",
+                    "stages": [
+                      "Reserva nas águas"
+                    ],
+                    "flows": [
+                        "n_18_ReMs_Reserva na seca de multíparas.-n_18_RaMs_Reserva nas águas de multíparas.",
+                        "n_18_RaMs_Reserva nas águas de multíparas.-b_31_7_MoMs_Monta de multíparas solteiras."
+                    ],
+                    "duration": 30,
+                    "type": "est_tratamento"
+                },               
+                "n_19_BaMp_Venda de bezerras desmamadas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                        "n_16_AlMp_Aleitamento de multíparas prenhes.-n_19_BaMp_Venda de bezerras desmamadas."
+                    ],
+                    "duration": 0,
+                    "type": "terminal_saida_tratamento"
+                },
+                "n_19_BaMv_Venda de bezerras desmamadas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                        "n_44_AlMv_Aleitamento de multíparas vazias.-n_19_BaMv_Venda de bezerras desmamadas."
+                    ],
+                    "duration": 0,
+                    "type": "terminal_saida_tratamento"
+                },
+                "n_19_BaPp_Venda de bezerras desmamadas.": {
+                    "formula": "0",
+                    "stages": [
+                        "(nenhuma)"
+                    ],
+                    "flows": [
+                        "n_59_AlPp_Aleitamento de primíparas prenhes.-n_19_BaPp_Venda de bezerras desmamadas."
+                    ],
+                    "duration": 0,
+                    "type": "terminal_saida_tratamento"
+                }
+            },
+            "flows": {
+                "n_2_TeBm_Terminação em confinamento de bois magros.-n_1_VeBg_Venda de bois gordos.": {
+                    "formula": "PRODUCAO",
+                    "resource": {
+                        "name": "Bois gordos",
+                        "unit": "cab",
+                        "category": "BOIS_GORDOS"
+                    },
+                    "type": "Produção",
+                    "factor": 438,
+                    "day": 200,
+                    "qty": 438
+                },
+                "n_3_AgBo_Recria nas águas de bezerros.-n_2_TeBm_Terminação em confinamento de bois magros.": {
+                    "formula": "1/(1-PERDAS)^(CONFINAMENTO/CICLO)",
+                    "resource": {
+                        "name": "Bezerros recriados nas águas",
+                        "unit": "cab",
+                        "category": "BEZERROS"
+                    },
+                    "type": "Produção",
+                    "factor": 1.0030,
+                    "day": 90,
+                    "qty": 439.33
+                },
+                "n_8_SeBo_Recria na seca de bezerros.-n_3_AgBo_Recria nas águas de bezerros.": {
+                    "formula": "1/(1-PERDAS)^(AGUAS/CICLO)",
+                    "resource": {
+                        "name": "Bezerros recriados na seca",
+                        "unit": "cab",
+                        "category": "BEZERROS"
+                    },
+                    "type": "Produção",
+                    "factor": 1.0059,
+                    "day": -122,
+                    "qty": 441.90
+                },
+                "b_12_1_Bo_Balanço de bezerros desmamados.-n_8_SeBo_Recria na seca de bezerros.": {
+                    "formula": "1/(1-PERDAS)^(SECA/CICLO)",
+                    "resource": {
+                        "name": "Bezerros desmamados",
+                        "unit": "cab",
+                        "category": "BEZERROS"
+                    },
+                    "type": "Produção",
+                    "factor": 1.0042,
+                    "day": -275,
+                    "qty": 443.77
+                },
+                "n_16_AlMp_Aleitamento de multíparas prenhes.-b_12_1_Bo_Balanço de bezerros desmamados.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerros desmamados",
+                        "unit": "cab",
+                        "category": "BEZERROS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 443.77
+                },
+                "n_16_AlMp_Aleitamento de multíparas prenhes.-n_18_ReMs_Reserva na seca de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas reservadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 443.77
+                },
+                "n_16_AlMp_Aleitamento de multíparas prenhes.-n_19_BaMp_Venda de bezerras desmamadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerras desmamadas",
+                        "unit": "cab",
+                        "category": "BEZERRAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 443.77
+                },
+                "n_16_AlMp_Aleitamento de multíparas prenhes.-b_20_10_GeMs_Gestação na seca de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 443.77
+                },
+                "n_16_AlMp_Aleitamento de multíparas prenhes.-b_21_4_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 443.77
+                },
+                "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-n_16_AlMp_Aleitamento de multíparas prenhes.": {
+                    "formula": "1/(PARTO_MACHO*(1-PERDAS_CRIA)^((AGUAS-PUERPERIO)/CICLO))",
+                    "resource": {
+                        "name": "Multíparas paridas prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 2.0411,
+                    "day": -306,
+                    "qty": 905.78
+                },
+                "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-b_26_9_GaMs_Gestação nas águas de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 905.78 
+                },
+                "n_17_DiMp_Diagnose de prenhez de multíparas paridas.-b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 905.78
+                },
+                "n_25_MoMp_Monta de multíparas paridas.-n_17_DiMp_Diagnose de prenhez de multíparas paridas.": {
+                    "formula": "1/(PRENHEZ*(1-PERDAS)^(DIAGNOSE/CICLO))",
+                    "resource": {
+                        "name": "Multíparas paridas após a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1.1129,
+                    "day": -365,
+                    "qty": 1008.06
+                },
+                "n_25_MoMp_Monta de multíparas paridas.-b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras após a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -365,
+                    "qty": 1008.06
+                },
+                "n_35_PuMp_Puerpério de multíparas.-n_25_MoMp_Monta de multíparas paridas.": {
+                    "formula": "1/(1-PERDAS)^(MONTA/CICLO)",
+                    "resource": {
+                        "name": "Multíparas paridas para a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1.0025,
+                    "day": -457,
+                    "qty": 1010.62
+                },
+                "n_35_PuMp_Puerpério de multíparas.-b_31_7_MoMs_Monta de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras para a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -457,
+                    "qty": 1010.62
+                },
+                "n_35_PuMp_Puerpério de multíparas.-n_44_AlMv_Aleitamento de multíparas vazias.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas paridas para a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -457,
+                    "qty": 1010.62
+                },
+                "b_42_3_Mp_Balanço de multíparas paridas.-n_35_PuMp_Puerpério de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas paridas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1.0008,
+                    "day": -487,
+                    "qty": 1011.45
+                },
+                "n_48_GePs_Gestação na seca de primíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas paridas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1011.45
+                },
+                "n_18_ReMs_Reserva na seca de multíparas.-n_18_RaMs_Reserva nas águas de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas reservadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -122,
+                    "qty": 1010.62
+                },
+                "n_18_RaMs_Reserva nas águas de multíparas.-b_31_7_MoMs_Monta de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras para a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -92,
+                    "qty": 1010.62
+                },
+                "b_31_7_MoMs_Monta de multíparas solteiras.-n_43_MoMs_Monta de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras para a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -457,
+                    "qty": 1010.62
+                },
+                "b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.-n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas reservadas.",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_43_MoMs_Monta de multíparas solteiras.-b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras após a monta",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -365,
+                    "qty": 1010.62
+                },
+                "n_44_AlMv_Aleitamento de multíparas vazias.-b_12_1_Bo_Balanço de bezerros desmamados.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerros desmamados",
+                        "unit": "cab",
+                        "category": "BEZERROS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 1010.62
+                },
+                "n_44_AlMv_Aleitamento de multíparas vazias.-n_19_BaMv_Venda de bezerras desmamadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerras desmamadas",
+                        "unit": "cab",
+                        "category": "BEZERRAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 1010.62
+                },
+                "n_44_AlMv_Aleitamento de multíparas vazias.-b_21_4_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 1010.62
+                },
+                "n_59_AlPp_Aleitamento de primíparas prenhes.-n_48_GePs_Gestação na seca de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "b_36_8_DiMs_Diagnose de prenhez de multíparas solteiras.-n_49_DiMs_Diagnose de prenhez de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 1010.62
+                },
+                "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.-b_26_9_GaMs_Gestação nas águas de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 1010.62
+                },
+                "b_26_9_GaMs_Gestação nas águas de multíparas solteiras.-n_64_GaMs_Gestação nas águas de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 1010.62
+                },
+                "n_49_DiMs_Diagnose de prenhez de multíparas solteiras.-b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 1010.62
+                },
+                "b_27_6_EaMs1_Engorda nas águas de multíparas falhadas.-n_65_EaMs1_Engorda nas águas de multíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -306,
+                    "qty": 1010.62
+                },
+                "n_69_DiPp_Diagnose de prenhez de primíparas paridas.-n_59_AlPp_Aleitamento de primíparas prenhes.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas paridas prenhes",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -671,
+                    "qty": 1010.62
+                },
+                "n_59_AlPp_Aleitamento de primíparas prenhes.-b_12_1_Bo_Balanço de bezerros desmamados.": {
+                        "formula": "1",
+                    "resource": {
+                        "name": "Bezerros desmamados",
+                        "unit": "cab",
+                        "category": "BEZERROS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_59_AlPp_Aleitamento de primíparas prenhes.-b_72_14_RePs_Reserva na seca de primíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_64_GaMs_Gestação nas águas de multíparas solteiras.-b_20_10_GeMs_Gestação na seca de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 1010.62
+                },
+                "b_20_10_GeMs_Gestação na seca de multíparas solteiras.-n_76_GeMs_Gestação na seca de multíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 1010.62
+                },
+                "n_64_GaMs_Gestação nas águas de multíparas solteiras.-b_21_4_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -275,
+                    "qty": 1010.62
+                },
+                "n_65_EaMs1_Engorda nas águas de multíparas falhadas.-b_21_4_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "b_21_4_EnMs_Engorda na seca de multíparas.-n_81_EnMs_Engorda na seca de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "n_85_MoPp_Monta de primíparas paridas.-n_69_DiPp_Diagnose de prenhez de primíparas paridas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas paridas após a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -730,
+                    "qty": 1010.62
+                },
+                "n_69_DiPp_Diagnose de prenhez de primíparas paridas.-b_86_11_GaPs_Gestação nas águas de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -671,
+                    "qty": 1010.62
+                },
+                "n_59_AlPp_Aleitamento de primíparas prenhes.-n_19_BaPp_Venda de bezerras desmamadas.": { 
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerras desmamadas",
+                        "unit": "cab",
+                        "category": "BEZERRAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_76_GeMs_Gestação na seca de multíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas paridas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -122,
+                    "qty": 1010.62
+                },
+                "n_76_GeMs_Gestação na seca de multíparas solteiras.-b_93_5_EaMs2_Engorda nas águas de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -122,
+                    "qty": 1010.62
+                },
+                "n_81_EnMs_Engorda na seca de multíparas.-b_93_5_EaMs2_Engorda nas águas de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "b_93_5_EaMs2_Engorda nas águas de multíparas.-n_97_EaMs2_Engorda nas águas de multíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "n_152_RaPs2_Reserva nas águas de primíparas após aleitamento.-b_169_12_MoPs_Monta de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras para a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -822,
+                    "qty": 1010.62
+                },
+                "n_101_PuPp_Puerpério de primíparas.-b_169_12_MoPs_Monta de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras para a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -822,
+                    "qty": 1010.62
+                },
+                "n_101_PuPp_Puerpério de primíparas.-n_85_MoPp_Monta de primíparas paridas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas paridas para a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -822,
+                    "qty": 1010.62
+                },
+                "b_169_12_MoPs_Monta de primíparas solteiras.-n_113_MoPs_Monta de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras para a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -822,
+                    "qty": 1010.62
+                },
+                "n_85_MoPp_Monta de primíparas paridas.-b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas paridas após a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -730,
+                    "qty": 1010.62
+                },
+                "n_97_EaMs2_Engorda nas águas de multíparas.-n_108_VeMg_Venda de multíparas solteiras vazias gordas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas gordas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS_GORDAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -92,
+                    "qty": 1010.62
+                },
+                "n_112_GeNu_Gestação na seca de nulíparas.-n_101_PuPp_Puerpério de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas paridas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "n_112_GaNu_Gestação nas águas de nulíparas.-b_118_13_EnNu_Engorda na seca de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas prenhes",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -1005,
+                    "qty": 1010.62
+                },
+                "n_112_GaNu_Gestação nas águas de nulíparas.-n_112_GeNu_Gestação na seca de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas prenhes",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1005,
+                    "qty": 1010.62
+                },
+                "n_117_DiNu_Diagnose de prenhez de nulíparas.-n_112_GaNu_Gestação nas águas de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas prenhes",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1036,
+                    "qty": 1010.62
+                },
+                "n_129_EaNu1_Engorda nas águas de nulíparas falhadas.-b_118_13_EnNu_Engorda na seca de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas descartadas",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -1005,
+                    "qty": 1010.62
+                },
+                "n_112_GeNu_Gestação na seca de nulíparas.-b_118_13_EaNu2_Engorda nas águas de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas descartadas",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "n_113_MoPs_Monta de primíparas solteiras.-b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras após a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": 1096,
+                    "qty": 1010.62
+                },
+                "n_128_MoNu_Monta de nulíparas.-n_117_DiNu_Diagnose de prenhez de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas após a monta",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1095,
+                    "qty": 1010.62
+                },
+                "n_117_DiNu_Diagnose de prenhez de nulíparas.-n_129_EaNu1_Engorda nas águas de nulíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas descartadas",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -1036,
+                    "qty": 1010.62
+                },
+                "b_86_11_GaPs_Gestação nas águas de primíparas solteiras.-n_133_GaPs_Gestação nas águas de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "b_102_16_DiPs_Diagnose de prenhez de primíparas solteiras.-n_122_DiPs_Diagnose de prenhez de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras após a monta",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -671,
+                    "qty": 1010.62
+                },
+                "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-b_86_11_GaPs_Gestação nas águas de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -671,
+                    "qty": 1010.62
+                },
+                "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-n_134_RaPs1_Reserva nas águas de primíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -671,
+                    "qty": 1010.62
+                },
+                "n_122_DiPs_Diagnose de prenhez de primíparas solteiras.-n_190_EaPs1_Engorda nas águas de primíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -671,
+                    "qty": 1010.62
+                },
+                "n_138_AgNu_Recria nas águas de nulíparas.-n_128_MoNu_Monta de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas para a monta",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1187,
+                    "qty": 1010.62
+                },
+                "b_118_13_EnNu_Engorda na seca de nulíparas.-n_144_EnNu_Engorda na seca de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas descartadas",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "n_133_GaPs_Gestação nas águas de primíparas solteiras.-n_133_GePs1_Gestação na seca de primíparas solteiras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes.",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_133_GaPs_Gestação nas águas de primíparas solteiras.-b_72_14_RePs_Reserva na seca de primíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes.",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_133_GaPs_Gestação nas águas de primíparas solteiras.-b_199_17_EnPs_Engorda na seca de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas solteiras prenhes.",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_42_3_Mp_Balanço de multíparas paridas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas paridas",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas reservadas.",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_133_GePs1_Gestação na seca de primíparas solteiras.-b_199_17_EaPs2_Engorda nas águas de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Multíparas descartadas.",
+                        "unit": "cab",
+                        "category": "MULTIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_134_RaPs1_Reserva nas águas de primíparas falhadas.-b_72_14_RePs_Reserva na seca de primíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "b_72_14_RePs_Reserva na seca de primíparas falhadas.-n_152_RePs_Reserva na seca de primíparas falhadas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_156_SeNu_Recria na seca de nulíparas.-n_138_AgNu_Recria nas águas de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas recriadas na seca",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1217,
+                    "qty": 1010.62
+                },
+                "n_144_EnNu_Engorda na seca de nulíparas.-b_118_13_EaNu2_Engorda nas águas de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas descartadas",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "b_118_13_EaNu2_Engorda nas águas de nulíparas.-n_144_EaNu2_Engorda nas águas de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas descartadas",
+                        "unit": "cab",
+                        "category": "NULIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -852,
+                    "qty": 1010.62
+                },
+                "n_144_EaNu2_Engorda nas águas de nulíparas.-n_162_VeNg_Venda de nulíparas gordas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Nulíparas gordas",
+                        "unit": "cab",
+                        "category": "NULIPARAS_GORDAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -822,
+                    "qty": 1010.62
+                },
+                "n_48_GePs_Gestação na seca de primíparas solteiras.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_152_RePs_Reserva na seca de primíparas falhadas.-b_72_14_RaPs2_Reserva nas águas de primíparas após aleitamento.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas reservadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_173_AgBa_Recria nas águas de bezerras.-n_156_SeNu_Recria na seca de nulíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerras recriadas nas águas",
+                        "unit": "cab",
+                        "category": "BEZERRAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1370,
+                    "qty": 1010.62
+                },
+                "n_185_SeBa_Recria na seca de bezerras.-n_173_AgBa_Recria nas águas de bezerras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerras recriadas na seca",
+                        "unit": "cab",
+                        "category": "BEZERRAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1582,
+                    "qty": 1010.62
+                },
+                "n_190_EaPs1_Engorda nas águas de primíparas falhadas.-b_199_17_EnPs_Engorda na seca de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas descartadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "b_199_17_EnPs_Engorda na seca de primíparas.-n_203_EnPs_Engorda na seca de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas descartadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -640,
+                    "qty": 1010.62
+                },
+                "n_207_CoBa_Compra de bezerras desmamadas.-n_185_SeBa_Recria na seca de bezerras.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Bezerras desmamadas",
+                        "unit": "cab",
+                        "category": "BEZERRAS"
+                    },
+                    "type": "Produção",
+                    "factor": 1,
+                    "day": -1735,
+                    "qty": 1010.62
+                },
+                "n_203_EnPs_Engorda na seca de primíparas.-b_199_17_EaPs2_Engorda nas águas de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas descartadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "b_199_17_EaPs2_Engorda nas águas de primíparas.-n_203_EaPs2_Engorda nas águas de primíparas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas descartadas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -487,
+                    "qty": 1010.62
+                },
+                "n_203_EaPs2_Engorda nas águas de primíparas.-n_209_VePg_Venda de primíparas solteiras vazias gordas.": {
+                    "formula": "1",
+                    "resource": {
+                        "name": "Primíparas gordas",
+                        "unit": "cab",
+                        "category": "PRIMIPARAS_GORDAS"
+                    },
+                    "type": "Tratamento",
+                    "factor": 1,
+                    "day": -457,
+                    "qty": 1010.62
+                }
+            },
+            "idModel": 18,
+            "root": "n_1_VeBg_Venda de bois gordos.",
+            "nodeOne": "n_2_TeBm_Terminação em confinamento de bois magros."
+        },
+        "parameters": {
+            "AGUAS": 212,
+            "CICLO": 365,
+            "CONFINAMENTO": 110,
+            "DIAGNOSE": 59, 
+            "INICIO_AGUAS": 90,
+            "MONTA": 92,
+            "NATALIDADE": 0.80,
+            "PARTO_MACHO": 0.50,
+            "PERDAS": 0.01,
+            "PERDAS_CRIA": 0.03,
+            "PRECO#BEZERRAS": 890.0,
+            "PRECO#BEZERROS": 960.0,
+            "PRECO#BOIS_GORDOS": 9100.0,
+            "PRECO#MULTIPARAS_GORDAS": 5100.0,
+            "PRECO#MULTIPARAS_PARIDAS": 5900.0,
+            "PRECO#NULIPARAS_GORDAS": 4100.0,
+            "PRECO#PRIMIPARAS_GORDAS": 4400.0,
+            "PRENHEZ": 0.90,
+            "PRODUCAO": 438,
+            "PUERPERIO": 30
+        },
+        "systemParameters": {
+            "AGUAS": {"min": 200, "std": 212, "max": 220}, 
+            "CICLO": {"min": 365, "std": 365, "max": 365}, 
+            "CONFINAMENTO": {"min": 100, "std": 110, "max": 120}, 
+            "INICIO_AGUAS": {"min": 80, "std": 90, "max": 100}, 
+            "DIAGNOSE": {"min": 30, "std": 60, "max": 90}, 
+            "PARTO_MACHO": {"min": 0.5, "std": 0.5, "max": 0.5}, 
+            "MONTA": {"min": 60, "std": 90, "max": 120},
+            "NATALIDADE": {"min": 0.50, "std": 0.80, "max": 1.00},
+            "PERDAS": {"min": 0.01, "std": 0.03, "max": 0.05}, 
+            "PERDAS_CRIA": {"min": 0.03, "std": 0.05, "max": 0.10}, 
+            "PRECO#BEZERRAS": {"min": 800.0, "std": 900.0, "max": 1000.0}, 
+            "PRECO#BEZERROS": {"min": 850.0, "std": 950.0, "max": 1100.0}, 
+            "PRECO#BOIS_GORDOS": {"min": 7000.0, "std": 9000.0, "max": 10000.0},
+            "PRECO#MULTIPARAS_GORDAS": {"min": 4000.0, "std": 5000.0, "max": 6000.0},
+            "PRECO#MULTIPARAS_PARIDAS": {"min": 5000.0, "std": 6000.0, "max": 7000.0}, 
+            "PRECO#NULIPARAS_GORDAS": {"min": 3000.0, "std": 4000.0, "max": 5000.0}, 
+            "PRECO#PRIMIPARAS_GORDAS": {"min": 3500.0, "std": 4500.0, "max": 5500.0}, 
+            "PRENHEZ": {"min": 0.50, "std": 0.80, "max": 1.00}, 
+            "PRODUCAO": {"min": 300, "std": 400, "max": 500}, 
+            "PUERPERIO": {"min": 25, "std": 30, "max": 40} 
+        },
+        "calculatedParameters": {
+            "FIM_AGUAS": "AGUAS-DIAGNOSE-MONTA-PUERPERIO",
+            "SECA": "CICLO-AGUAS" 
+        },
+        "resources": {
+          "Bezerras desmamadas": {
+              "unit": "cab",
+              "category": "BEZERRAS"
+          },
+          "Bezerras recriadas nas águas": {
+              "unit": "cab",
+              "category": "BEZERRAS"
+          },
+          "Bezerras recriadas na seca": {
+              "unit": "cab",
+              "category": "BEZERRAS"
+          },
+          "Bezerros desmamados": {
+              "unit": "cab",
+              "category": "BEZERROS"
+          },
+          "Bezerros recriados nas águas": {
+              "unit": "cab",
+              "category": "BEZERROS"
+          },
+          "Bezerros recriados na seca": {
+              "unit": "cab",
+              "category": "BEZERROS"
+          },
+          "Bois gordos": {
+              "unit": "cab",
+              "category": "BOIS_GORDOS"
+          },
+          "Multíparas descartadas": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas gordas": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas paridas": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas paridas após a monta": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas paridas para a monta": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas paridas prenhes": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas reservadas": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas solteiras após a monta": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas solteiras para a monta": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Multíparas solteiras prenhes": {
+              "unit": "cab",
+              "category": "MULTIPARAS"
+          },
+          "Nulíparas após a monta": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Nulíparas descartadas": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Nulíparas gordas": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Nulíparas para a monta": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Nulíparas prenhes": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Nulíparas recriadas na seca": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Nulíparas recriadas nas águas": {
+              "unit": "cab",
+              "category": "NULIPARAS"
+          },
+          "Primíparas descartadas": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas gordas": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas paridas": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas paridas após a monta": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas paridas para a monta": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas paridas prenhes": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas reservadas": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas solteiras após a monta": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas solteiras para a monta": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+          },
+          "Primíparas solteiras prenhes": {
+              "unit": "cab",
+              "category": "PRIMIPARAS"
+            }
+        },
+        "stagesHierarchy": {
+            "(nenhuma)": {
+                "color": "white",
+                "label": null
+            },
+            "Aleitamento": {
+                "color": "powderblue",
+                "label": "Al"
+            },
+            "Balanço": {
+                "color": "black",
+                "label": null
+            },
+            "Compra": {
+                "color": "lightgrey",
+                "label": "Ve"
+            },
+            "Diagnose": {
+                "color": "gold",
+                "label": "Di"
+            },
+            "Engorda na seca": {
+                "color": "moccasin",
+                "label": "En"
+            },
+            "Engorda nas águas": {
+                "color": "beige",
+                "label": "Ea"
+            },
+            "Gestação na seca": {
+                "color": "burlywood",
+                "label": "Ge"
+            },
+            "Gestação nas águas": {
+                "color": "deeppink",
+                "label": "Ga"
+            },
+            "Monta": {
+                "color": "magenta",
+                "label": "Mo"
+            },
+            "Puerpério": {
+                "color": "yellow",
+                "label": "Pu"
+            },
+            "Recria na seca": {
+                "color": "khaki",
+                "label": "Se"
+            },
+            "Recria nas águas": {
+                "color": "darkkhaki",
+                "label": "Ag"
+            },
+            "Reserva na seca": {
+                "color": "aquamarine",
+                "label": "Re"
+            },
+            "Reserva nas águas": {
+                "color": "mediumaquamarine",
+                "label": "Ra"
+            },
+            "Confinamento": {
+                "color": "cyan",
+                "label": "Te"
+            },
+            "Venda": {
+                "color": "salmon",
+                "label": "Ve"
+            }
+        },
+        "stock": null,
+        "categoriesResourceHierarchy": {
+            "BEZERRAS": "FEMEAS",
+            "BEZERROS": "MACHOS",
+            "MULTIPARAS_PARIDAS": "MULTIPARAS",
+            "MULTIPARAS_GORDAS": "MULTIPARAS",
+            "MULTIPARAS": "MATRIZES",
+            "PRIMIPARAS_GORDAS": "PRIMIPARAS",
+            "PRIMIPARAS": "MATRIZES",
+            "NULIPARAS_GORDAS": "NULIPARAS",
+            "NULIPARAS": "MATRIZES",
+            "MATRIZES": "FEMEAS",
+            "FEMEAS": "BOVINOS",
+            "MACHOS": "BOVINOS"
+        },
+        "calculatedIndicators": null,
+        "indicatorsToCalculate": null
+    },
+    "resultQuery": null
+}

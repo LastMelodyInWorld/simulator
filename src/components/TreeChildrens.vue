@@ -9,6 +9,7 @@
           v-for="item in menuFlow"
           :key="item.value"
           @click="setTypeOfClick(item.value)"
+          :class="isActive(item.value)"
           :ripple="true"
         >
           <v-list-tile-action>
@@ -18,6 +19,10 @@
             <v-list-tile-title>{{ item.text }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+      <v-card-actions>
+        <v-btn @click="cancelChangeInNode">Cancelar</v-btn>
+        <v-btn @click="saveChangeInNode">Salvar</v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -26,14 +31,14 @@
 import { actionsType } from '../library/D3Tree'
 
 export default {
-  props: ['childrens'],
+  props: ['childrens', 'selectedNode', 'treeChildren', 'TypeOfActionSelectedNow'],
   data () {
     return {
       menuFlow: [
         {
           text: 'SS',
           icon: 'add',
-          value: actionsType.addSS
+          value: actionsType.addSS 
         },
         {
           text: 'SE',
@@ -56,7 +61,16 @@ export default {
   methods: {
     setTypeOfClick (type) {
       this.$emit('setTypeClickTree', type)
+    },
+    cancelChangeInNode () {
+      this.$emit('confirmEditNode', true)
+    },
+    saveChangeInNode () {
       this.$emit('confirmEditNode', false)
+    },
+    isActive (itemValue) {
+      if (this.TypeOfActionSelectedNow === itemValue) return 'active'
+      else return ''
     }
   }
 }
